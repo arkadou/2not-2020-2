@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script> 
+        
+        //use strict obriga a utilização de LET, VAR ou CONST para declarar variaveis
+        'use strict'
+
+        //declarando 3 variaveis separadamente
+        let a 
+        let b 
+        let c 
+
+        //declarando 3 variaveis de uma vez
+        let x, y, z
+
+        let v1 = "teste"       //string
+        let v2 = 2.75          //number
+        let v3 = true          //boolean
+        let v4 = 70            //number
+        let v5 = 'outro teste' //string
+        let v6 =               //undefined
+        let v7 = "358"         //string
+
+        //descobrindo o tipo de cada variavel
+        //alert(typeof v1)
+
+        //declarando variaveis com e sem valor
+        let q1 = 5, q2 = 7, q3 = "4", res
+        let v2 = "Batata"
+
+        //operadores aritimeticos
+        res = q1 - q2    //subtração
+        res = q1 - q3    //subtração com string sendo um numero
+        res = q1 - v1    //erro pois o string não contem um numero
+
+        //multiplicação
+        res = q1 * q2
+        res = q1 * q3
+        res = q1 * v2
+
+        //divisão
+        res = q1 / q2
+        res = q1 / q3
+        res = q1 / v2
+
+        //adição
+        res = q1 + q2  // 12
+        res = q1 + q3  //"54" houve concatenação
+        res = q1 + v2  //"5Batata" houve concatenação
+
+        res = q1 + Number(q3)  // 9
+
+         res = q1 + parseInt(q3) // 9
+
+        //potenciação
+        res = q1 ** q2  // 78125
+        res = q1 ** q3  // 625, com conversão
+        res = q1 ** v2  // NaN
+
+        res = Math.pow(q1, q2) 
+
+        //operador de modulo (resto da divisão)
+        res = 5 % 2   // 1
+        res = 11 % 3  // 2
+        res = 8 % 2   // 0
+
+        alert(res)
+
+    </script>
+</head>
+<body>
+    
+
+
+</body>
+</html>
