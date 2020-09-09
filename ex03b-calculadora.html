@@ -36,30 +36,34 @@
 
         if (isNaN(n1) || isNaN(n2))
         {
-            document.write('Erro: OS VALORES DIGITADOS NÃO SÃO NUMEROS!!!')
+            alert('Erro: OS VALORES DIGITADOS NÃO SÃO NUMEROS!!!')
             temErro = true
         }
-        else if (fun == '+')
-       {
-           resul = n1 + n2 
-       }
-        else if (fun == '-')
-       {
-           resul = n1 - n2  
-       }
-        else if (fun == '*' || fun == 'X' || fun == 'x')
-       {
-           resul = n1 * n2    
-       }
-        else if (fun == '/' || fun == ':')
-       {
-           resul = n1 / n2  
-       } 
-       else 
-       {
-           document.write('Erro: OPERADOR INVALIDO!!!')
-           temErro = true
-       } 
+        else
+        {
+            switch(fun)
+            {
+                case '+':
+                    resul = n1 + n2
+                    break
+                case '-':
+                    resul = n1 - n2
+                    break
+                case '*':
+                case 'x':
+                case 'X':
+                    resul = n1 * n2
+                    break
+                case '/':
+                case ':':
+                    resul = n1 / n2
+                    break
+                
+                default:
+                    alert('ERRO: Operador inválido.')
+                    temErro = true
+            }
+        }
 
        if(!temErro)
        {
