@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script> 
+        'use strict' //obriga a utilização de LET, VAR ou CONST para declarar variaveis
+      
+      let soma = 0
+
+      let num = 1
+
+        /*
+            caracteristicas do While
+            1. Local do teste: No inicio
+            2. Garantia de execução: 0 (zero se condição não bater)
+            3. Numero de repetições: indeterminado
+
+        */
+
+        //estrutura de repetição While
+
+      while(num != 0)
+      {
+          //Number é a mesma coisa que parseFloat
+          num = Number(prompt('Informe um numero a ser somado (ou 0 para terminar):'))
+
+          if(!isNaN(num))
+          {
+              soma += num //soma = soma = num
+          }
+      }
+
+      document.write(`A soma dos numeros informados é ${soma}.`)
+
+
+    </script>
+</head>
+<body>
+    
+
+
+</body>
+</html>

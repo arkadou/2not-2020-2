@@ -23,6 +23,58 @@
             FEVEREIRO: 28 dias (29 em anos bissextos)
         */
 
+        let mes = parseInt(prompt('Insira o mês desajado (1 á 12)'))
+        let dia, ano = ''
+        let temErro = false
+
+        if(isNaN(mes) || mes < 0 || mes > 12)
+        {
+            alert('ERRO: O MES INFORMADO NÃO EXISTE!!!')
+            temErro = true
+        }
+        else
+        {
+            switch(mes)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    dia = 31
+                    break
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    dia = 30
+                    break
+                case 2:
+                    ano = parseInt(prompt('Insira o ano:'))
+
+                    if(ano < 0)
+                    {
+                        alert('ERRO: ANO INVÁLIDO')
+                        temErro = true
+                    }
+                    else if((ano % 400 == 0) || ((ano % 4 == 0) && (ano % 100 !== 0)))
+                    {
+                        dia = 29
+                    }
+                    else
+                    {
+                        dia = 28
+                    }
+            }
+        }
+
+        if(!temErro)
+        {
+            document.write('Existem ' + dia + ' dias no mês escolhido!')
+        }
+
     </script>
 </head>
 <body>

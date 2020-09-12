@@ -38,6 +38,47 @@
             ao dígito informado.
         */
 
+       let num = Number(prompt('Insira um numero (0 - 9):'))
+       let letra 
+       let temErro = false
+
+       if(isNaN(num) || num > 9 || num < 0)
+       {
+           alert('ERRO: NUMERADOR NÃO ACEITO!!!')
+           temErro = true
+       }
+       else
+        {
+            switch(num)
+            {
+                case 0:
+                    letra = 'A'
+                case 1:
+                    letra = 'B'
+                case 2:
+                    letra = 'C'
+                case 3:
+                    letra = 'D'
+                case 4:
+                    letra = 'E'
+                case 5:
+                    letra = 'F'
+                case 6:
+                    letra = 'G'
+                case 7:
+                    letra = 'H'
+                case 8:
+                    letra = 'I'
+                case 9:
+                    letra = 'J'
+            }
+        }
+
+        if(!temErro)
+        {
+            document.write('A letra correspondente ao dígito ' + num + ' é: ' + letra + '.')
+        }
+                    
     </script>
 </head>
 <body>
