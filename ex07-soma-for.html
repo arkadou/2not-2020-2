@@ -21,7 +21,26 @@
             os dois valores informados (inclusive).            
 
         */
+       let n1, n2
+       let soma
 
+    do{
+        do{
+            n1 = parseInt(prompt("informe um numero inteiro:"))
+        }while(isNaN(n1))
+       do{
+           n2 = parseInt(prompt("informe um numero inteiro diferente do anterior:"))
+       }while(isNaN(n2))
+    }while(n1 >= n2)
+
+    soma = 0
+    for(let i = n1; i <= n2; i++){
+        soma += i
+    }
+    
+    document.write(`A soma dos numeros ${n1} e ${n2} é ${soma}`)
+
+      
     </script>
 </head>
 <body>

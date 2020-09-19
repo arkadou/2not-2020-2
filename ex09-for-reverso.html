@@ -22,6 +22,17 @@
 
         */
 
+        let num 
+        do{
+            num = parseInt(prompt("Insira um numero maior que 1:"))
+        }while(isNaN(num) || num <= 0)
+
+        let fat = 1
+        for(let i = num; i > 1; i--){
+            fat = fat * i
+        }
+        alert(`${num}! é igual a ${fat}.` )
+
     </script>
 </head>
 <body>
