@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+
+</head>
+<body>
+    <h1>Titulo da página</h1>
+    <p>Isto é um paragrafo</p>
+    <ul>
+        <li>Primeiro item</li>
+        <li id="intruso"> intruso </li>
+        <li id="item-x"> intuso 2? </li>
+        <li>Segundo item</li>
+        <li>Terceiro item</li>
+    </ul>
+<script> 
+    'use strict' //obriga a utilização de LET, VAR ou CONST para declarar variaveis
+    /*
+        DOM = Document Object Model
+    */
+
+   //document.querySelector => retorna o primeiro elemento do seu tipo
+   const cabec = document.querySelector('h1')
+   //Alterand o texto interno do elemento
+   cabec.innerHTML = 'Manipulando o document Object Model (DOM)'
+
+   /*
+        alterando o texto do SEGUNDO item
+   */
+    //document.querySelectorAll caprtura todos os elementos do tipo informado
+    const itens = document.querySelectorAll('li')
+    //em javascript, o primeiro elemento é o de indice 0(ZERO)
+    itens[0].innerHTML = "Bertoldo"
+
+    //document.getElementsByTagName forma tradicional de capturar elementos
+    const itens2 = document.getElementsByTagName('li')
+    itens2[3].innerHTML = 'Jeronimo'
+
+    //document.getElementById capturando por ID da forma antiga
+    const elemIntruso = document.getElementById('intruso')
+    elemIntruso.innerHTML = 'sou um intruso!!'
+
+    //capturando um elemento por ID da forma nova (ES5+)
+    //para capturar por ID com o querySelector é necessario usar # antes do ID
+    const elemX = document.querySelector('#item-x')
+    elemX.style.backgroundColor = 'red'
+
+    
+</script>
+</body>
+</html>
