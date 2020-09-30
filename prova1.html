@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script> 
+        'use strict' //obriga a utilização de LET, VAR ou CONST para declarar variaveis
+      
+        for(let i = 1; i <= 400; i = i + 29){
+            document.write(`há uma lombofaixa no kilometro: ${i}<br>`)
+        }
+        /*considerei a primeira lombofaixa no kilometro 29
+            após isso o looping adiciona mais 29 kiloemtros e 
+            marca como uma nova lombofaixa, até chegar no numero maximo
+            no caso 400.
+        */
+      let num
+      do{
+          num = parseInt(prompt("insira um numero entre 1 e 400:"))
+      }while(isNaN(num) || num <= 0 || num > 400)
+
+      
+
+        switch(num){
+            case 92:
+            case 177:
+            case 291:
+            case 388:
+                document.write(`Existe uma Megaloja Magazine Luiza no ${num}km. <br>`)
+                break
+            case 153:
+            case 356:
+                document.write(`Existe um Drive-Thru dos Calçados Rafarillo no ${num}km. <br>`)
+                break
+            case 187:
+                document.write(`Existe um posto de Recarga da Viação São José no ${num}km. <br>`)
+                break
+            case 210:
+                document.write(`Existe uma Filial da Padaria Estrela no ${num}km. <br>`)
+                break
+            case 314:
+                document.write(`Existe uma Fabrica do Jubileu Amendoim no ${num}km. <br>`)
+                break
+            case 367:
+                document.write(`Existe a Franca AcquaParque Un.2 no ${num}km. <br>`)
+                break 
+            default:
+                document.write(`Vapo, tem nada aqui não. Segue reto toda vida, meu fii. <br>`)           
+        }
+
+        /*
+            utilizei o do while para pegar um numero valido entre 1 e 400 e após isso
+            utilizei o switch para confirmar o numero e analisar se existe algo no km
+            informado. não sei exatamente o que colocar para casos diferentes, então 
+            deixei o "num" como o ultimo caso, já que o switch so atribui o case para
+            o primeiro caso com sucesso. isso significa que, contando que esteja por ultimo
+            não havera dois "document.write".
+        */
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>
