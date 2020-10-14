@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        label {
+            display: block;
+        }
+        fieldset label{
+            display: inline;
+        }
+        fieldset {
+            border: 1px solid lightgrey;
+            border-radius: 8px;
+            width: 200px;
+        }
+        div, fieldset {
+            margin-bottom: 15px;
+        }
+    </style>
+    <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+    
+        /* 
+
+            Monte um formulário com os seguintes campos:
+            * Primeiro número (input numérico)
+            * Operação aritmética (select, com as opções de soma, subtração,
+                multiplicação, divisão, potenciação e resto da divisão)
+            * Segundo número (input numérico)
+            * Div para exibição do resultado da operação aritmética
+            * Botão "calcular"
+
+            Validações:
+            * Os campos de número devem estar preenchidos e com números válidos
+            * Deve ter sido selecionada uma operação artimética válida
+
+        */
+
+    </script>
+</head>
+<body>
+    <h1>Calculadora Online</h1>
+
+    <div>
+        <label>Primeiro Número</label>
+        <input type="number" id="primeiro-numero">
+    </div>
+
+    <div>
+        <label>Operação Aritimetica</label>
+        <select id="operacao">
+            <option>(Selecione)</option>
+            <option>Soma</option>
+            <option>Subtração</option>
+            <option>Multiplicação</option>
+            <option>Divisão</option>
+            <option>Potenciação</option>
+            <option>Resto da Divisão</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Segundo Número</label>
+        <input type="number" id="segundo-numero">
+    </div>
+
+    <fieldset>
+        <legend>Exibição do Resultado</legend>
+        <input type="checkbox" id="alert" checked>
+        <label for="alert">Exibir como Alert()</label>
+        <br>
+        <input type="checkbox" id="document">
+        <label for="document">Exibir como Documento()</label>
+    </fieldset>
+
+    <div id="mensagem"></div>
+
+    <div>
+        <button id="enviar">Enviar</button>
+    </div>
+
+    <script>
+        const elPrimeiroNum = document.getElementById('primeiro-numero')
+        const elSegundoNum = document.getElementById('segundo-numero')
+        const elOperacao = document.querySelector('#operacao')
+
+        const elDocument = document.querySelector('#document')
+        const elAlert = document.querySelector('#alert')
+        const elEnviar = document.querySelector('#enviar')
+        const elResultado = document.querySelector('#mensagem')
+
+
+        function validar(){
+
+            let valido = true
+
+            if(elPrimeiroNum.value.trim() == ''){
+                alert('O primeiro Numero deve ser informado.')
+                elPrimeiroNum.focus() 
+                valido = false
+            }
+            else if(elSegundoNum.value.trim() == ''){
+                alert('O Segundo Numero deve ser informado.')
+                elSegundoNum.focus() 
+                valido = false
+            }
+            else if(elOperacao.selectedIndex <= 0){
+                alert('Escolha uma Operação aritimetica.')
+                elOperacao.focus()
+                valido = false
+            }
+            else if(!(elAlert.checked || elDocument.checked)){
+                alert('Pelo menos uma forma de exibição deve ser selecionada.')
+                elAlert.focus()
+                valido = false
+            }
+            return valido
+        }
+
+
+        function montarOperacao(){
+            if (validar()){
+                let num1 = Number(elPrimeiroNum.value)
+                let num2 = Number(elSegundoNum.value)
+                let op = ''
+                let resultado 
+
+                switch(elOperacao.selectedIndex){
+                    case 1:
+                        resultado = num1 + num2  
+                        op = '+'
+                        break
+                    case 2:
+                        resultado = num1 - num2
+                        op = '-'
+                        break
+                    case 3:
+                        resultado = num1 * num2
+                        op = '*'
+                        break
+                    case 4:
+                        resultado = num1 / num2
+                        op = '/'
+                        break
+                    case 5:
+                        resultado = num1 ** num2
+                        op = '**'
+                        break
+                    default:
+                        resultado = num1 % num2
+                        op = '%'
+                        break
+                } 
+
+                resultado = `O resultado da operação ${num1} ${op} ${num2} é igual a ${resultado}`
+
+                if(elAlert.checked){
+                    alert(resultado)
+                }
+                if(elDocument.checked){
+                    elResultado.innerText = `O resultado da operação ${num1} ${op} ${num2} é igual a ${resultado}`
+                }
+            }
+        }
+
+        elEnviar.addEventListener('click', montarOperacao)
+
+
+
+    </script>
+    
+</body>
+</html>
