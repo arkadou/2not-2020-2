@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <style>
+        label {
+            display: block;
+        }
+        fieldset label{
+            display: inline;
+        }
+        fieldset {
+            border: 1px solid lightgrey;
+            border-radius: 8px;
+            width: 200px;
+        }
+        div, fieldset {
+            margin-bottom: 15px;
+        }
+    </style>
     <script>
         // 'use strict' impede que variáveis sejam declaradas
         // sem o uso de let, var ou const
@@ -45,20 +61,68 @@
         */
 
     </script>
-
-<!--[if gte mso 9]><xml>
-<mso:CustomDocumentProperties>
-<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
-<mso:Order msdt:dt="string">176900.000000000</mso:Order>
-<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
-<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
-<mso:ContentTypeId msdt:dt="string">0x010100D1709B3E936BE4488A7EEB682FDD8227</mso:ContentTypeId>
-<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
-<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
-</mso:CustomDocumentProperties>
-</xml><![endif]-->
 </head>
 <body>
-    
+    <h1>Formulario Padrão de Texto</h1>
+
+    <div>
+        <label>Caractere</label>
+        <input id="caractere" type="text" maxlength="1" placeholder="Digite apenas UM caractere">
+    </div>
+
+    <div>
+        <label>Numero</label>
+        <input id="numero" type="number" maxlength="3" placeholder="Numeros de 1 a 100">
+    </div>
+
+    <div id="mensagem"></div>
+
+    <div>
+        <button id="enviar">Enviar</button>
+    </div>
+
+    <script>
+    const elCaractere = document.getElementById('caractere')
+    const elNumero = document.querySelector('#numero')
+    const elMensagem = document.getElementById('mensagem')
+    const elEnviar = document.querySelector('#enviar')
+
+    function validar(){
+        let valido = true
+
+        if(elCaractere.value.trim() == ''){
+            alert('Digite um caractere valido!!!')
+            elCaractere.focus()
+            valido = false
+        }
+        else if(elNumero.value.trim() == '' || elNumero.value < 1 || elNumero.value > 100){
+            alert('Digite um numero valido!!!')
+            elNumero.focus()
+            valido = false
+        }
+        return valido 
+    }
+
+    function gerarPadrao(){
+        if(validar()){
+            let num = Number(elNumero.value)
+            let car = String(elCaractere.value)
+            let car2 = String(elCaractere.value)
+            let padrao = ''
+
+            for (let i = 1; i <= num; i++) {
+	            padrao += car + '<br/>'
+	            elMensagem.innerHTML = padrao
+	            car += car2
+            }
+        }
+    }
+
+    elEnviar.addEventListener('click', gerarPadrao)
+
+
+
+
+    </script>
 </body>
 </html>
