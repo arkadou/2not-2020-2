@@ -6,29 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelo de documento HTML</title>
     <style>
-        fieldset label{
-            display: inline;
-        }
-        fieldset {
-            border: 1px solid lightgrey;
-            border-radius: 8px;
-            width: 200px;
-        }
-        div, fieldset {
-            margin-bottom: 20px;
-        }
+        
     </style>
 </head>
 
 <body>
     <div>
         <label>Numero</label>
-        <input type="number" id="num">
+        <input type="num" id="numero">
     </div>
 
     <div>
         <button id="inserir">Inserir</button>
     </div>
+
+    <div id="resultado"></div>
 
     <script>
         // 'use strict' impede que variáveis sejam declaradas
@@ -63,30 +55,49 @@
 
         */
 
-        let vet = []
+        let vetor = []
 
-        const elNum = document.getElementById('num')
+        const elNumero = document.getElementById('numero')
         const elInserir = document.getElementById('inserir')
+        const elResultado = document.getElementById('resultado')
 
-        function validar(){
+        function insere(){
+            let num = parseInt(elNumero.value)
             let valido = true
-            
-            if(elNum.value.trim() == '' || elNum.value(isNaN)){
-                alert('Por favor insira um numero qualquer')
+
+            if(isNaN(num)){
+                alert('O valor informado não é um numero inteiro valido.')
+                elNumero.focus()
                 valido = false
             }
-            return valido
-        }
-
-        function montarVetor(){
-            if(validar()){
-                
+            if(valido){
+                //caso 1: vetor vazio
+                if(vetor.length === 0){
+                    vetor.push(num)
+                }
+                //caso 2: existem elementos no vetor
+                else{
+                    let i = 0
+                    for(i = 0; i < vetor.length; i++){
+                        if(num < vetor[i]){ //encontrou a possição
+                            vetor.splice([i], 0, num) //insere o valor na posição
+                            break //interrompe o loop for
+                        }
+                    }
+                    if(i === vetor.length){
+                        vetor.push(num)
+                    }
+                }
+                //exibição do vetor
+                let texto = ''
+                for(let elemento of vetor){
+                    texto += elemento + ", "
+                }
+                elResultado.innerText = texto
             }
         }
-
-        elInserir.addEventListener('click', montarVetor)
-
-        
+        elInserir.addEventListener('click', insere)
+   
     </script>
 
 </body>

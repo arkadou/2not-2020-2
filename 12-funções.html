@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script> 
+        'use strict' //obriga a utilização de LET, VAR ou CONST para declarar variaveis
+
+        /*
+            Função é um trecho de código que é "isolado" do restante
+            de um programa com a finalidade de ser executado 
+            em um momento posterior.
+
+            como declarar uma função:
+            1) é obrigatorio o uso da palavra-chave "function"
+            2) a function PODE ter um nome (existem funções anônimas)
+            3) é obrigatorio o uso de parentes () pós o nome 
+            4) dentro dos '()' podem ser passados os dados da função,
+                mas necsessarios as tarefas que a função desempenhará. esses dados
+                passados são chamados de PARAMETROS ou ARGUMENTOS.
+            5) um par de chaves que delimitará o codigo isolado da função, que é 
+                chamado CORPO DA FUNÇÃO
+            6) dentro do corpo da função, PODE haver um valor de retorno, que é
+                indicado pela palavra-chave 'return'
+            
+        */
+        //declaração da função 
+        function soma(n1, n2){
+            return n1 + n2
+        }
+
+        //chamada da função (chamadas da função podem vir antes ou depois da declaração da função)
+        let x = soma(15, 19)
+        alert(x)
+
+        alert(soma(12.5, 89.5))
+
+        let a = 45.75, b = 67.15
+        alert(soma(a, b))
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
