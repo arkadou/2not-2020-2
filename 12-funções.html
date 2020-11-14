@@ -31,19 +31,165 @@
         }
 
         //chamada da função (chamadas da função podem vir antes ou depois da declaração da função)
-        let x = soma(15, 19)
+        /*let x = soma(15, 19)
         alert(x)
 
         alert(soma(12.5, 89.5))
 
         let a = 45.75, b = 67.15
-        alert(soma(a, b))
+        alert(soma(a, b))*/
 
+        //função com UM parâmetro
+        function fatorial(num){
+            //O fatorial de um numero é igual a ele próprio multiplicado
+            //pelos seus antecessores até 1
+            //5! 5.4.3.2.1
+            let fat = 1
+            for(let i = num; i > 1; i--){
+                fat *= i
+            }
+            return fat
+        }
+        document.write(`5! é igual a ${fatorial(5)} <br>`)
+        document.write(`9! é igual a ${fatorial(9)} <br>`)
+        let res = fatorial(6)
+        document.write(`6! é igual a ${res} <br>`)
 
+        /*
+            função sem valor de retorno
+        */
+       //algumas funções desempenham tarefas mas não retornam um
+       // resultado ao final
+       
+       function traco(tamanho){
+           for(let i = 1; i <= tamanho; i++){
+               document.write('-')
+           }
+           document.write('<br>')
+       }
+       //chamadas de função
+       traco(40)
+       traco(15)
+       let ret = traco(20) //funções sem valor explicito retornam undefined
+       document.write(`ret = ${ret} <br>`)
 
+       /*
+        FUNÇÕES DETERMINISTICAS X NÃO DETERMINISTICAS
+       */
+       
+       //função deterministica: todas as vzes que a função
+       // é chamada com os mesmo argumentos, ela sempre retornará
+       // o mesmo resultado.
+       //ex.: fatorial(5) sempre irá retornar 120
+       
+       //Exemplo de função não deterministica: Math.ramdom()
+       document.write(Math.random() + '<br>')
+       document.write(Math.random() + '<br>')
+       document.write(Math.random() + '<br>')
 
+       //gerar um numero aleatorio entre 1 e 60
+       document.write((Math.random() * 61)  + '<br>')
 
+       //Math.floor() retira as casas decimais
+       document.write(Math.floor((Math.random() * 61))  + '<br>')
 
+       /*
+        PARAMETROS OPCIONAIS
+       */
+        function potencia(base, expoente = 2){
+            return base ** expoente
+        }
+
+        document.write(`2 elevado a 5 é ${potencia(2,5)} <br>`)
+        document.write(`5 elevado a 4 é ${potencia(5,4)} <br>`)
+        //suponha que, na maioria dos casos que essa função é chamada
+        // o expoente seja 2
+        document.write(`5 elevado a 2 é ${potencia(5,2)} <br>`)
+        document.write(`7 elevado a 2 é ${potencia(7)} <br>`)
+        document.write(`8 elevado a 2 é ${potencia(8)} <br>`)
+
+        /*
+            PARAMETRO OU ARGUMENTO DE RESTO
+        */
+        // suponha uma função que recebe um numero arbitrario de
+        // numeros e retorna a sua soma
+        function somaTudo(...nums){ //argumento de resto é definido por "..."
+            let soma = 0
+            for(let i = 0; i < nums.length; i++){
+                soma += nums[i]
+            }
+            return soma
+        }
+        let result = somaTudo(20, 40, 10, 5, 9, 15)
+        document.write('Resultado somaTudo (1): ' + result + '<br>')
+        result = somaTudo(2, 5, 8, 9, 0, -3, 8, 14, 7)
+        document.write('Resultado somaTudo (2): ' + result + '<br>')
+
+        function somaTudoAcumulado(inicial, ...nums){ 
+            let som = inicial
+            for(let i = 0; i < nums.length; i++){ 
+                som += nums[i]
+            }
+            return som
+        }
+
+        let abc = somaTudoAcumulado(1000, 2, 8, 0, 3, 7, 10, 50)
+        document.write('Resultado somaTudoAcumulado: ' + abc + '<br>')
+
+        /*
+            EXPRESSÃO DE FUNÇÃO
+        */
+
+        //uma expressão de função é a declaração de uma função
+        //atribuida a uma variavel.
+        //quando isso ocorre, a função de poder ser chamada
+        //por seu nome e deve ser chamada pelo nome da variavel.
+
+        //função que determina qual de seus dois argumentos é o menor
+        let minimo = function min(a, b){
+            if(a < b){
+                return a
+            }
+            else{
+                return b
+            }
+        }
+        document.write('Minimo de 5, 7 é ' + minimo(5, 7) + '<br>')
+
+        //por isso, o mais comum, em expressões de função, é usar
+        //funções anônimas
+        //quando uma função é atribuida a uma variavel,deve-se necessariamente chama-la após a variavel
+        let mult = function(x, y){
+            return x * y
+        }
+ 
+        document.write('Mult 7 * 9 => ' + mult(7, 9) + '<br>')
+
+        /*
+        ARROW FUNCTION
+        */
+
+        //expressões de função com as seguintes caracteristicas:
+        //1. apenas um argumento
+        //2. o corpo da função tem apenas 1 linha
+        //3. a função retorna o valor
+        let quadrado = function(x){
+            return x * x
+        }
+        document.write('quadrado de 7 => ' + quadrado(7) + '<br>')
+
+        //essa mesma função pode ser escrita com a sintaxe chamada ARROW FUNCTION
+        //1. a plavra-chave "function" é omitida
+        //2. omitem-se os parametros que envolvem o argumento
+        //3. entre o argumento e o corpo da função, coloca-se o simbolo =>
+        //4. o corpo da função vem imediatamente em seguida, sem as chaves 
+        // e sem a palavra-chave "return"
+
+        let quadrado2 = x => x * x 
+        document.write('quadrado de 11 => ' + quadrado2(11) + '<br>')
+
+        let subtract = (a,b) => a - b
+        document.write('subtração de 100 - 26 => ' + subtract(100, 26) + '<br>')
 
 
 
