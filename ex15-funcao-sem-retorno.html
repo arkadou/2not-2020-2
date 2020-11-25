@@ -5,6 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelo de documento HTML</title>
+    <style>
+        label {
+            display: block;
+        }
+        fieldset label{
+            display: inline;
+        }
+        fieldset {
+            border: 1px solid lightgrey;
+            border-radius: 8px;
+            width: 200px;
+        }
+        div, fieldset {
+            margin-bottom: 15px;
+        }
+    </style>
     <script>
         // 'use strict' impede que variáveis sejam declaradas
         // sem o uso de let, var ou const
@@ -37,7 +53,67 @@
 </head>
 
 <body>
+    <h1>Formulario Padrão de Texto</h1>
 
+    <div>
+        <label>Caractere</label>
+        <input id="caractere" type="text" maxlength="1" placeholder="Digite apenas UM caractere">
+    </div>
+
+    <div>
+        <label>Numero</label>
+        <input id="numero" type="number" maxlength="3" placeholder="Numeros de 1 a 100">
+    </div>
+
+    <div id="mensagem"></div>
+
+    <div>
+        <button id="enviar">Enviar</button>
+    </div>
+
+<script>
+    const elCaractere = document.getElementById('caractere')
+    const elNumero = document.querySelector('#numero')
+    const elMensagem = document.getElementById('mensagem')
+    const elEnviar = document.querySelector('#enviar')
+
+    function validar(){
+        let valido = true
+
+        if(elCaractere.value.trim() == ''){
+            alert('Digite um caractere valido!!!')
+            elCaractere.focus()
+            valido = false
+        }
+        else if(elNumero.value.trim() == '' || elNumero.value < 1 || elNumero.value > 100){
+            alert('Digite um numero valido!!!')
+            elNumero.focus()
+            valido = false
+        }
+        return valido 
+    }
+
+    function gerarPadrao(){
+        if(validar()){
+            let num = Number(elNumero.value)
+            let car = String(elCaractere.value)
+            let car2 = String(elCaractere.value)
+            let padrao = ''
+
+            for (let i = 1; i <= num; i++) {
+	            padrao += car + '<br/>'
+	            elMensagem.innerHTML = padrao
+	            car += car2
+            }
+        }
+    }
+
+    elEnviar.addEventListener('click', gerarPadrao)
+
+
+
+
+</script>
 </body>
 
 </html>
